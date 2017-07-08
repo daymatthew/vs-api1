@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
             return _context.TodoItems.ToList();
         }
 
-        [HttpGet("{id", Name = "GetTodo")]
+        [HttpGet("{id}", Name = "GetTodo")]
         public IActionResult GetById(long id)
         {
             var item = _context.TodoItems.FirstOrDefault(t => t.Id == id);
