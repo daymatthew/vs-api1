@@ -75,5 +75,19 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
             return new NoContentResult();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var todo = _context.TodoItems.First(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _context.TodoItems.Remove(todo);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
     }
 }
