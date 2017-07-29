@@ -22,13 +22,13 @@ namespace WebApplication1.Controllers
                 _context.SaveChanges();
             }
         }
-
+        // GET api/todo
         [HttpGet]
         public IEnumerable<TodoItem> GetAll()
         {
             return _context.TodoItems.ToList();
         }
-
+        // GET api/todo/1
         [HttpGet("{id}", Name = "GetTodo")]
         public IActionResult GetById(long id)
         {
@@ -39,7 +39,7 @@ namespace WebApplication1.Controllers
             }
             return new ObjectResult(item);
         }
-
+        // POST api/todo
         [HttpPost]
         public IActionResult Create([FromBody] TodoItem item)
         {
@@ -53,7 +53,7 @@ namespace WebApplication1.Controllers
 
             return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
         }
-
+        // PUT api/todo/1
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] TodoItem item)
         {
@@ -75,7 +75,7 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
             return new NoContentResult();
         }
-
+        // DELETE api/todo/1
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
